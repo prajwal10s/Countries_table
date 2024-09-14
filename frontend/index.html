@@ -54,17 +54,25 @@
       <!-- div to load data -->
       <div id="countries-list"></div>
       
-      <!-- <div id="pageButtonCont" class="pageButtonCont"></div> -->
+      
       <!-- pagination controls -->
       <nav>
-        <ul class="pagination justify-content-center">
+        <ul class="pagination justify-content-center" id = "pageBtnLinks">
           <li class="page-item" id="first-page">
             <a class="page-link" href="#" onclick="firstPage()">&lt;&lt; First</a>
           </li>
           <li class="page-item" id="prev-page">
             <a class="page-link" href="#" onclick="prevPage()">&lt; Previous</a>
           </li>
-          
+          <li class="page-item" id="page1">
+            <a class="page-link" href="#" onclick="handlePageClick(1)">1</a>
+          </li>
+          <li class="page-item" id="page2">
+            <a class="page-link" href="#" onclick="handlePageClick(2)">2</a>
+          </li>
+          <li class="page-item" id="page3">
+            <a class="page-link" href="#" onclick="handlePageClick(3)">3</a>
+          </li>
           <li class="page-item" id="next-page">
             <a class="page-link" href="#" onclick="nextPage()">Next ></a>
           </li>

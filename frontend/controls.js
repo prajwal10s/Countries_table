@@ -22,6 +22,25 @@ function updateUrl(page, sortField, sortOrder, rowsPerPage) {
   window.history.pushState({}, "", url);
 }
 
+//create all buttons dynamically
+//for the page number buttons
+
+function displayPageNumberButtons() {
+  let pagesBtnContainer = document.getElementById("pageBtnLinks");
+  pagesBtnContainer.innerHTML = "";
+  const pagesBtnHtml = "";
+
+  // Generate page numbers dynamically
+  for (let i = startPage; i <= endPage; i++) {
+    let pageBtn = document.createElement("button");
+    pageBtn.textContent = i;
+    pageBtn.classList.add("btn", "btn-primary");
+    if (i === currPage) pageBtn.classList.add("active");
+    pageBtn.onclick = () => fetchCountries(i);
+    pagesBtnContainer.appendChild(pageBtn);
+  }
+}
+
 // get countries from our API using the params mentioned in our query or from the form
 //we have to get data from the query
 function fetchCountries(page = 1) {
@@ -117,16 +136,49 @@ function lastPage() {
 function prevPage() {
   if (currPage > 1) {
     fetchCountries(currPage - 1);
+    if (currPage > 2 && currPage < totalPages) {
+      let page1 = document.querySelector("#page1 .page-link");
+      page1.innerText = currPage - 2;
+      let page2 = document.querySelector("#page2 .page-link");
+      page2.innerText = currPage - 1;
+      let page3 = document.querySelector("#page3 .page-link");
+      page3.innerText = currPage;
+    }
   }
 }
-
 //for next button and we make an API call here after changing the paramters
 function nextPage() {
   if (currPage < totalPages) {
     fetchCountries(currPage + 1);
+    if (currPage > 1 && currPage < totalPages - 1) {
+      let page1 = document.querySelector("#page1 .page-link");
+      page1.innerText = currPage;
+      let page2 = document.querySelector("#page2 .page-link");
+      page2.innerText = currPage + 1;
+      let page3 = document.querySelector("#page3 .page-link");
+      page3.innerText = currPage + 2;
+    }
   }
 }
-
+// function handlePageClick(flag) {
+//   if (flag === 1) {
+//     if (currPage !== 1) {
+//       prevPage();
+//     }
+//   }
+//   if (flag === 2) {
+//     if (currPage === 1) {
+//       nextPage();
+//     } else if (currPage === totalPages) {
+//       prevPage();
+//     }
+//   }
+//   if (flag === 3) {
+//     if (currPage !== totalPages) {
+//       nextPage();
+//     }
+//   }
+// }
 // Running on page page load
 window.onload = function () {
   const page = parseInt(getQueryParam("page")) || 1;

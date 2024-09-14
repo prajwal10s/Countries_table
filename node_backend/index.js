@@ -5,13 +5,20 @@ const { sortCountries, readCountries } = require("./Controllers/countries");
 
 app.get("/api/countries", async (req, res) => {
   try {
+    const page = parseInt(req.query.page) || 1;
+    const rows = parseInt(req.query.rows) || 10;
+
+    const sortField = req.query.sortField || "Country Name";
+    const sortOrder = req.query.sortOrder || "asc";
+
+    const startInd = (page - 1) * rows;
+    const endInd = page * rows;
+
     const countries = await readCountries();
-    const countriesToShow = countries.slice(0, 10);
-    const sortedCountries = sortCountries(
-      countriesToShow,
-      "desc",
-      "Population"
-    );
+    const sortedCountries = sortCountries(countries, sortOrder, sortField);
+
+    const countriesToShow = sortedCountries.slice(startInd, endInd);
+
     res.json({
       total: countries.length,
       data: countriesToShow,

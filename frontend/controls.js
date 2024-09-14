@@ -22,22 +22,42 @@ function updateUrl(page, sortField, sortOrder, rowsPerPage) {
   window.history.pushState({}, "", url);
 }
 
-//create all buttons dynamically
-//for the page number buttons
+//change the button tags accoring to the page you are on
+//also change the active tag on the link depending on which page you are on
 
-function displayPageNumberButtons() {
-  let pagesBtnContainer = document.getElementById("pageBtnLinks");
-  pagesBtnContainer.innerHTML = "";
-  const pagesBtnHtml = "";
+function displayPageNumberButtons(page) {
+  let page1 = document.querySelector("#page1 .page-link");
 
-  // Generate page numbers dynamically
-  for (let i = startPage; i <= endPage; i++) {
-    let pageBtn = document.createElement("button");
-    pageBtn.textContent = i;
-    pageBtn.classList.add("btn", "btn-primary");
-    if (i === currPage) pageBtn.classList.add("active");
-    pageBtn.onclick = () => fetchCountries(i);
-    pagesBtnContainer.appendChild(pageBtn);
+  let page2 = document.querySelector("#page2 .page-link");
+
+  let page3 = document.querySelector("#page3 .page-link");
+
+  let pageLink1 = document.querySelector("#page1");
+
+  let pageLink2 = document.querySelector("#page2");
+
+  let pageLink3 = document.querySelector("#page3");
+
+  pageLink1.classList.remove("active");
+  pageLink2.classList.remove("active");
+  pageLink3.classList.remove("active");
+
+  //take care of edge cases
+  if (page === 1) {
+    page1.innerText = page;
+    pageLink1.classList.add("active");
+    page2.innerText = page + 1;
+    page3.innerText = page + 2;
+  } else if (page === totalPages) {
+    page1.innerText = page - 2;
+    page2.innerText = page - 1;
+    page3.innerText = page;
+    pageLink3.classList.add("active");
+  } else {
+    page1.innerText = page - 1;
+    page2.innerText = page;
+    pageLink2.classList.add("active");
+    page3.innerText = page + 1;
   }
 }
 
@@ -51,7 +71,7 @@ function fetchCountries(page = 1) {
     getQueryParam("sortOrder") || document.getElementById("sortOrder").value;
 
   currPage = page;
-
+  displayPageNumberButtons(page);
   currRowsPerPage =
     getQueryParam("rowsPerPage") ||
     document.getElementById("rowsPerPage").value;
@@ -136,49 +156,15 @@ function lastPage() {
 function prevPage() {
   if (currPage > 1) {
     fetchCountries(currPage - 1);
-    if (currPage > 2 && currPage < totalPages) {
-      let page1 = document.querySelector("#page1 .page-link");
-      page1.innerText = currPage - 2;
-      let page2 = document.querySelector("#page2 .page-link");
-      page2.innerText = currPage - 1;
-      let page3 = document.querySelector("#page3 .page-link");
-      page3.innerText = currPage;
-    }
   }
 }
 //for next button and we make an API call here after changing the paramters
 function nextPage() {
   if (currPage < totalPages) {
     fetchCountries(currPage + 1);
-    if (currPage > 1 && currPage < totalPages - 1) {
-      let page1 = document.querySelector("#page1 .page-link");
-      page1.innerText = currPage;
-      let page2 = document.querySelector("#page2 .page-link");
-      page2.innerText = currPage + 1;
-      let page3 = document.querySelector("#page3 .page-link");
-      page3.innerText = currPage + 2;
-    }
   }
 }
-// function handlePageClick(flag) {
-//   if (flag === 1) {
-//     if (currPage !== 1) {
-//       prevPage();
-//     }
-//   }
-//   if (flag === 2) {
-//     if (currPage === 1) {
-//       nextPage();
-//     } else if (currPage === totalPages) {
-//       prevPage();
-//     }
-//   }
-//   if (flag === 3) {
-//     if (currPage !== totalPages) {
-//       nextPage();
-//     }
-//   }
-// }
+
 // Running on page page load
 window.onload = function () {
   const page = parseInt(getQueryParam("page")) || 1;

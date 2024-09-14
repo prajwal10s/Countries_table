@@ -13,21 +13,22 @@ function getQueryParam(param) {
 }
 
 // Function to update our URL without reloading the page
-function updateUrl(page, sortField, sortOrder) {
+function updateUrl(page, sortField, sortOrder, rowsPerPage) {
   const url = new URL(window.location.href);
   url.searchParams.set("page", page);
   url.searchParams.set("sortField", sortField);
   url.searchParams.set("sortOrder", sortOrder);
+  url.searchParams.set("rowsPerPage", rowsPerPage);
   window.history.pushState({}, "", url);
 }
 
 // get countries from our API using the params mentioned in our query or from the form
 //we have to get data from the query
 function fetchCountries(page = 1) {
-  currSortField =
+  currentSortField =
     getQueryParam("sortField") || document.getElementById("sortField").value;
 
-  currSortOrder =
+  currentSortOrder =
     getQueryParam("sortOrder") || document.getElementById("sortOrder").value;
 
   currPage = page;
@@ -38,7 +39,7 @@ function fetchCountries(page = 1) {
 
   // Make the API call with current page, sort field, and sort order
   fetch(
-    `${apiUrl}?page=${page}&rowsPerPage=${currRowsPerPage}&sortField=${currSortField}&sortOrder=${currSortOrder}`
+    `${apiUrl}?page=${page}&rowsPerPage=${currRowsPerPage}&sortField=${currentSortField}&sortOrder=${currentSortOrder}`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -88,7 +89,7 @@ function fetchCountries(page = 1) {
         .classList.toggle("disabled", currPage === totalPages);
 
       // Update URL with new state
-      updateUrl(currentPage, currentSortField, currentSortOrder);
+      updateUrl(currPage, currentSortField, currentSortOrder, currRowsPerPage);
     })
     .catch((error) => console.log("Error:", error));
 }
@@ -97,10 +98,21 @@ function fetchCountries(page = 1) {
 function applySorting() {
   const sortField = document.getElementById("sortField").value;
   const sortOrder = document.getElementById("sortOrder").value;
+  const rowsPerPage = document.getElementById("rowsPerPage").value;
   //if we change sorting value we fetch the page 1 again
+  currentSortField = sortField;
+  currentSortOrder = sortOrder;
+  currRowsPerPage = rowsPerPage;
+  updateUrl(currPage, currentSortField, currentSortOrder, currRowsPerPage);
   fetchCountries(1);
 }
-
+function firstPage() {
+  fetchCountries(1);
+}
+//for LastPage
+function lastPage() {
+  fetchCountries(totalPages);
+}
 //for previous button and we make an API call here after changing the parametes
 function prevPage() {
   if (currPage > 1) {

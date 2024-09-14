@@ -2,7 +2,9 @@ const express = require("express");
 const PORT = 3000;
 const app = express();
 const { sortCountries, readCountries } = require("./Controllers/countries");
+const cors = require("cors");
 
+app.use(cors());
 app.get("/api/countries", async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;

@@ -1,0 +1,200 @@
+﻿ID,Country Name,Capital City,Time Zone,Population
+1,Afghanistan,Kabul,+04:30,67
+2,Albania,Tirana (Tirane),+01:00,73
+3,Algeria,Algiers,+01:00,84
+4,Andorra,Andorra la Vella,+01:00,74
+5,Angola,Luanda,+01:00,6
+6,Antigua and Barbuda,Saint John's,−04:00,59
+7,Argentina,Buenos Aires,−03:00,86
+8,Armenia,Yerevan,+04:00,32
+9,Australia,Canberra,+10:00,8
+10,Austria,Vienna,+01:00,27
+11,Azerbaijan,Baku,+04:00,42
+12,Bahamas,Nassau,−05:00,89
+13,Bahrain,Manama,+03:00,36
+14,Bangladesh,Dhaka,+06:00,31
+15,Barbados,Bridgetown,−04:00,6
+16,Belarus,Minsk,+03:00,37
+17,Belgium,Brussels,+01:00,66
+18,Belize,Belmopan,−06:00,24
+19,Benin,Porto Novo,+01:00,70
+20,Bhutan,Thimphu,+06:00,66
+21,Bolivia,La Paz,−04:00,14
+22,Bosnia and Herzegovina,Sarajevo,+01:00,45
+23,Botswana,Gaborone,+02:00,34
+24,Brazil,Brasilia,−03:00,0
+25,Brunei,Bandar Seri Begawan,+08:00,88
+26,Bulgaria,Sofia,+02:00,0
+27,Burkina Faso,Ouagadougou,±00:00,17
+28,Burundi,Gitega,+02:00,84
+29,Cambodia,Phnom Penh,+07:00,5
+30,Cameroon,Yaounde,+01:00,95
+31,Canada,Ottawa,−04:00,34
+32,Cape Verde,Praia,−01:00,10
+33,Central African Republic,Bangui,+01:00,4
+34,Chad,N'Djamena,+01:00,20
+35,Chile,Santiago,−04:00,11
+36,China,Beijing,+08:00,18
+37,Colombia,Bogota,−05:00,82
+38,Comoros,Moroni,+03:00,65
+39,Congo(Democratic Republic),Kinshasa,+01:00,56
+40,Congo(Republic),Brazzaville,+01:00,37
+41,Costa Rica,San Jose,−06:00,62
+42,Côte d'Ivoire (Ivory Coast),Yamoussoukro,±00:00,42
+43,Croatia,Zagreb,+01:00,31
+44,Cuba,Havana,−05:00,58
+45,Cyprus,Nicosia,+02:00,87
+46,Czech Republic (Czechia),Prague,+02:00,74
+47,Denmark,Copenhagen,+01:00,55
+48,Djibouti,Djibouti,+03:00,82
+49,Dominica,Roseau,−04:00,29
+50,Dominican Republic,Santo Domingo,−04:00,55
+51,East Timor,Dili,+04:00,62
+52,Ecuador,Quito,−05:00,5
+53,Egypt,Cairo,+02:00,25
+54,El Salvador,San Salvador,−06:00,1
+55,England,London,+01:00,29
+56,Equatorial Guinea,Malabo,+01:00,76
+57,Eritrea,Asmara,+03:00,56
+58,Estonia,Tallinn,+02:00,20
+59,Eswatini,Mbabana,+02:00,14
+60,Ethiopia,Addis Ababa,+03:00,59
+61,Federated States of Micronesia,Palikir,+11:00,26
+62,Fiji,Suva,+12:00,71
+63,Finland,Helsinki,+02:00,75
+64,France,Paris,+01:00,39
+65,Gabon,Libreville,+01:00,21
+66,Gambia,Banjul,±00:00,4
+67,Georgia,Tbilisi,+04:00,11
+68,Germany,Berlin,+01:00,34
+69,Ghana,Accra,±00:00,6
+70,Greece,Athens,+02:00,10
+71,Grenada,Saint George's,−04:00,48
+72,Guatemala,Guatemala City,−06:00,83
+73,Guinea,Conakry,±00:00,43
+74,Guinea-Bissau,Bissau,±00:00,87
+75,Guyana,Georgetown,−04:00,57
+76,Haiti,Port au Prince,−05:00,44
+77,Honduras,Tegucigalpa,−06:00,7
+78,Hungary,Budapest,+01:00,82
+79,Iceland,Reykjavik,±00:00,72
+80,India,New Delhi,+05:30,66
+81,Indonesia,Jakarta,+07:00,96
+82,Iran,Tehran,+03:30,84
+83,Iraq,Baghdad,+03:00,14
+84,Ireland,Dublin,±00:00,17
+85,Israel,Jerusalem,+02:00,96
+86,Italy,Rome,+01:00,84
+87,Jamaica,Kingston,−05:00,47
+88,Japan,Tokyo,+09:00,21
+89,Jordan,Amman,+02:00,82
+90,Kazakhstan,Nur-Sultan,+06:00,65
+91,Kenya,Nairobi,+03:00,74
+92,Kiribati,Tarawa Atoll,+12:00,2
+93,Kosovo,Pristina,+01:00,22
+94,Kuwait,Kuwait City,+03:00,43
+95,Kyrgyzstan,Bishkek,+06:00,49
+96,Laos,Vientiane,+07:00,66
+97,Latvia,Riga,+02:00,28
+98,Lebanon,Beirut,+02:00,31
+99,Lesotho,Maseru,+02:00,60
+100,Liberia,Monrovia,±00:00,40
+101,Libya,Tripoli,+02:00,80
+102,Liechtenstein,Vaduz,+01:00,26
+103,Lithuania,Vilnius,+02:00,23
+104,Luxembourg,Luxembourg,+01:00,2
+105,Madagascar,Antananarivo,+03:00,11
+106,Malawi,Lilongwe,+02:00,53
+107,Malaysia,Kuala Lumpur,+08:00,89
+108,Maldives,Male,+05:00,43
+109,Mali,Bamako,±00:00,80
+110,Malta,Valletta,+01:00,49
+111,Marshall Islands,Majuro,+12:00,0
+112,Mauritania,Nouakchott,±00:00,4
+113,Mauritius,Port Louis,+04:00,7
+114,Mexico,Mexico City,-05:00,22
+115,Moldova,Chisinau,+02:00,66
+116,Monaco,Monaco,+01:00,25
+117,Mongolia,Ulaanbaatar,+08:00,45
+118,Montenegro,Podgorica,+01:00,41
+119,Morocco,Rabat,+01:00,91
+120,Mozambique,Maputo,+02:00,88
+121,Myanmar (Burma),Nay Pyi Taw,+06:30,26
+122,Namibia,Windhoek,+02:00,63
+123,Nauru,No official capital,+12:00,68
+124,Nepal,Kathmandu,+05:45,54
+125,Netherlands,Amsterdam,+01:00,78
+126,New Zealand,Wellington,+12:00,5
+127,Nicaragua,Managua,−06:00,53
+128,Niger,Niamey,+01:00,1
+129,Nigeria,Abuja,+01:00,44
+130,North Korea,Pyongyang,+09:00,54
+131,North Macedonia,Skopje,+02:00,45
+132,Northern Ireland,Belfast,+01:00,65
+133,Norway,Oslo,+01:00,96
+134,Oman,Muscat,+04:00,29
+135,Pakistan,Islamabad,+05:00,46
+136,Palau,Melekeok,+09:00,97
+137,Panama,Panama City,−05:00,68
+138,Papua New Guinea,Port Moresby,+10:00,76
+139,Paraguay,Asuncion,−04:00,91
+140,Peru,Lima,−05:00,79
+141,Philippines,Manila,+08:00,72
+142,Poland,Warsaw,+01:00,66
+143,Portugal,Lisbon,+01:00,51
+144,Qatar,Doha,+03:00,44
+145,Romania,Bucharest,+02:00,68
+146,Russia,Moscow,+03:00,48
+147,Rwanda,Kigali,+02:00,83
+148,Saint Kitts and Nevis,Basseterre,−04:00,28
+149,Saint Lucia,Castries,−04:00,88
+150,Saint Vincent and the Grenadines,Kingstown,−04:00,37
+151,Samoa,Apia,+13:00,75
+152,San Marino,San Marino,+01:00,46
+153,Sao Tome and Principe,Sao Tome,±00:00,3
+154,Saudi Arabia,Riyadh,+03:00,30
+155,Scotland,Edinburgh,+01:00,94
+156,Senegal,Dakar,±00:00,49
+157,Serbia,Belgrade,+01:00,96
+158,Seychelles,Victoria,+04:00,56
+159,Sierra Leone,Freetown,±00:00,19
+160,Singapore,Singapore,+08:00,36
+161,Slovakia,Bratislava,+01:00,79
+162,Slovenia,Ljubljana,+01:00,93
+163,Solomon Islands,Honiara,+11:00,36
+164,Somalia,Mogadishu,+03:00,60
+165,South Africa,"Pretoria, Bloemfontein, Cape Town",+02:00,64
+166,South Korea,Seoul,+09:00,67
+167,South Sudan,Juba,+02:00,30
+168,Spain,Madrid,+02:00,58
+169,Sri Lanka,Sri Jayawardenapura Kotte,+05:30,47
+170,Sudan,Khartoum,+02:00,56
+171,Suriname,Paramaribo,−03:00,68
+172,Sweden,Stockholm,+01:00,89
+173,Switzerland,Bern,+01:00,45
+174,Syria,Damascus,+02:00,51
+175,Taiwan,Taipei,+08:00,25
+176,Tajikistan,Dushanbe,+05:00,89
+177,Tanzania,Dodoma,+03:00,68
+178,Thailand,Bangkok,+07:00,68
+179,Togo,Lome,±00:00,30
+180,Tonga,Nuku'alofa,+13:00,47
+181,Trinidad and Tobago,Port of Spain,−04:00,49
+182,Tunisia,Tunis,+01:00,92
+183,Turkey,Ankara,+03:00,44
+184,Turkmenistan,Ashgabat,+05:00,63
+185,Tuvalu,Funafuti,+12:00,34
+186,Uganda,Kampala,+03:00,41
+187,Ukraine,Kyiv or Kiev,+02:00,94
+188,United Arab Emirates,Abu Dhabi,+04:00,72
+189,United Kingdom,London,±00:00,38
+190,United States,Washington D.C.,-04:00,93
+191,Uruguay,Montevideo,−03:00,12
+192,Uzbekistan,Tashkent,+05:00,85
+193,Vanuatu,Port Vila,+11:00,96
+194,Vatican City,Vatican City,±00:00,61
+195,Venezuela,Caracas,−04:00,46
+196,Vietnam,Hanoi,+07:00,16
+197,Yemen,Sana'a,+03:00,73
+198,Zambia,Lusaka,+02:00,10
+199,Zimbabwe,Harare,+02:00,75

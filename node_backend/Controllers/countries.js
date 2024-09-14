@@ -17,9 +17,11 @@ function readCountries() {
 function sortCountries(countries, order, field) {
   return countries.sort((a, b) => {
     if (order === "asc") {
-      return a[field] - b[field];
+      if (!isNaN(a[field]) && !isNaN(b[field])) return a[field] - b[field];
+      else return a[field].localeCompare(b[field]);
     } else {
-      return b[field] - a[field];
+      if (!isNaN(a[field]) && !isNaN(b[field])) return b[field] - a[field];
+      else return b[field].localeCompare(a[field]);
     }
   });
 }

@@ -19,14 +19,22 @@
       <div class="mb-3">
         <!-- rows control -->
         <label for="rowsPerPage">Show Rows</label>
-        <select id="rowsPerPage" class="form-control d-inline-block w-auto">
+        <select
+          id="rowsPerPage"
+          class="form-control d-inline-block w-auto"
+          onchange="applySorting()"
+        >
           <option value="5">5</option>
           <option value="10">10</option>
           <option value="50">50</option>
         </select>
         <!-- sort field control -->
         <label for="sortField">Sort By:</label>
-        <select id="sortField" class="form-control d-inline-block w-auto">
+        <select
+          id="sortField"
+          class="form-control d-inline-block w-auto"
+          onchange="applySorting()"
+        >
           <option value="Country Name">Country Name</option>
           <option value="Capital City">Capital City</option>
           <option value="Population">Population</option>
@@ -34,15 +42,14 @@
         </select>
         <!-- sort order controls -->
         <label for="sortOrder" class="ml-3">Order By:</label>
-        <select id="sortOrder" class="form-control d-inline-block w-auto">
+        <select
+          id="sortOrder"
+          class="form-control d-inline-block w-auto"
+          onchange="applySorting()"
+        >
           <option value="asc">Asc</option>
           <option value="desc">Desc</option>
         </select>
-
-        <button class="btn btn-primary ml-3" onclick="applySorting()">
-          Sort
-        </button>
-      </div>
 
       <!-- div to load data -->
       <div id="countries-list"></div>
@@ -51,10 +58,10 @@
       <nav>
         <ul class="pagination justify-content-center">
           <li class="page-item" id="prev-page">
-            <a class="page-link" href="#" onclick="prevPage()">Back</a>
+            <a class="page-link" href="#" onclick="prevPage()">&lt; Previous</a>
           </li>
           <li class="page-item" id="next-page">
-            <a class="page-link" href="#" onclick="nextPage()">Next</a>
+            <a class="page-link" href="#" onclick="nextPage()">Next ></a>
           </li>
         </ul>
       </nav>

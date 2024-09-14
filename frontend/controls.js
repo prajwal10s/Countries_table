@@ -80,6 +80,13 @@ function fetchCountries(page = 1) {
 
       countriesList.innerHTML = countriesHtml;
 
+      document
+        .getElementById("prev-page")
+        .classList.toggle("disabled", currPage === 1);
+      document
+        .getElementById("next-page")
+        .classList.toggle("disabled", currPage === totalPages);
+
       // Update URL with new state
       updateUrl(currentPage, currentSortField, currentSortOrder);
     })
@@ -96,15 +103,15 @@ function applySorting() {
 
 //for previous button and we make an API call here after changing the parametes
 function prevPage() {
-  if (currentPage > 1) {
-    fetchCountries(currentPage - 1);
+  if (currPage > 1) {
+    fetchCountries(currPage - 1);
   }
 }
 
 //for next button and we make an API call here after changing the paramters
 function nextPage() {
-  if (currentPage < totalPages) {
-    fetchCountries(currentPage + 1);
+  if (currPage < totalPages) {
+    fetchCountries(currPage + 1);
   }
 }
 

@@ -1,7 +1,8 @@
-let currentPage = 1;
+let currPage = 1;
 let totalPages = 1;
-let currentSortField = "name";
+let currentSortField = "Country Name";
 let currentSortOrder = "asc";
+let currRowsPerPage = 10;
 const apiUrl = "http://localhost:3000/api/countries";
 
 // This function is used to pull parameters from our query
@@ -47,15 +48,36 @@ function fetchCountries(page = 1) {
 
       // Add the list of countries to the page
       const countriesList = document.getElementById("countries-list");
-      let countriesHtml = '<ul class="list-group">';
+      let countriesHtml = `
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Country Name</th>
+                                    <th>Capital City</th>
+                                    <th>Time Zone</th>
+                                    <th>Population</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            `;
+
       data.data.forEach((country) => {
-        let countryName = country["Country name"];
+        let countryName = country["Country Name"];
         let capCity = country["Capital City"];
-        let timeZone = country["Time Zome"];
+        let timeZone = country["Time Zone"];
         let populatn = country["Population"];
-        countriesHtml += `<li class="list-group-item">${countryName} (Code: ${country.code}, Population: ${country.population})</li>`;
+        countriesHtml += `
+                            <tr>
+                                <td>${countryName}</td>
+                                <td>${capCity}</td>
+                                <td>${timeZone}</td>
+                                <td>${populatn}</td>
+                            </tr>`;
       });
-      countriesHtml += "</ul>";
+      countriesHtml += `
+                        </tbody>
+                        </table>`;
+
       countriesList.innerHTML = countriesHtml;
 
       // Update URL with new state

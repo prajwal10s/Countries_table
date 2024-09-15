@@ -179,7 +179,17 @@ function handlePageClick(page) {
     else if (page === "third") fetchCountries(currPage + 1);
   }
 }
+function expandSearch() {
+  const searchField = document.getElementById("searchField");
+  searchField.style.width = "400px"; // Expanded width on focus
+}
 
+function collapseSearch() {
+  const searchField = document.getElementById("searchField");
+  if (!searchField.value) {
+    searchField.style.width = "150px"; // Collapse if the field is empty
+  }
+}
 // Running on page page load
 window.onload = function () {
   const page = parseInt(getQueryParam("page")) || 1;

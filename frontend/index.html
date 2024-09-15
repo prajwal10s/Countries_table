@@ -15,10 +15,9 @@
   <body>
     <div class="container mt-5">
       <h2 class="mb-4">Countries List with Sorting and Pagination</h2>
-
       <div class="mb-3">
         <!-- rows control -->
-        <label for="rowsPerPage">Show Rows</label>
+        <label for="rowsPerPage" class="form-label d-inline-block">Show Rows</label>
         <select
           id="rowsPerPage"
           class="form-control d-inline-block w-auto"
@@ -28,8 +27,18 @@
           <option value="10">10</option>
           <option value="50">50</option>
         </select>
+
+        <input
+            id="searchField"
+            type="text"
+            class="form-control d-inline-block ml-2 search-input"
+            placeholder="Search"
+            onfocus="expandSearch()"
+            onblur="collapseSearch()"
+            style="transition: width 0.4s ease; width: 150px;"
+          />
         <!-- sort field control -->
-        <label for="sortField">Sort By:</label>
+        <label for="sortField" class="form-label d-inline-block ml-3">Sort By:</label>
         <select
           id="sortField"
           class="form-control d-inline-block w-auto"
@@ -41,7 +50,7 @@
           <option value="Time Zone">Time Zone</option>
         </select>
         <!-- sort order controls -->
-        <label for="sortOrder" class="ml-3">Order By:</label>
+        <label for="sortOrder" class="form-label d-inline-block ml-3">Order By:</label>
         <select
           id="sortOrder"
           class="form-control d-inline-block w-auto"
@@ -83,5 +92,6 @@
       </nav>
     </div>
     <script src="controls.js"></script>
+    
   </body>
 </html>

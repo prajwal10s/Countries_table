@@ -1,7 +1,11 @@
 const express = require("express");
 const PORT = 3000;
 const app = express();
-const { sortCountries, readCountries } = require("./Controllers/countries");
+const {
+  sortCountries,
+  readCountries,
+  filterByCondition,
+} = require("./Controllers/countries");
 const cors = require("cors");
 
 app.use(cors());
@@ -12,13 +16,22 @@ app.get("/api/countries", async (req, res) => {
 
     const sortField = req.query.sortField || "Country Name";
     const sortOrder = req.query.sortOrder || "asc";
-
+    const condition = req.query.condition || "";
     const startInd = (page - 1) * rowsPerPage;
     const endInd = page * rowsPerPage;
 
     const countries = await readCountries();
-    const sortedCountries = sortCountries(countries, sortOrder, sortField);
 
+    let sortedCountries = sortCountries(countries, sortOrder, sortField);
+    console.log(sortedCountries);
+    if (condition) {
+      sortedCountries = filterByCondition(sortedCountries, condition);
+      if (!sortedCountries)
+        throw new Error(
+          "There was an error while filtering data using condition"
+        );
+    }
+    console.log(sortedCountries);
     const countriesToShow = sortedCountries.slice(startInd, endInd);
 
     res.json({

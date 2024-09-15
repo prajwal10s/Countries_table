@@ -3,6 +3,7 @@ let totalPages = 1;
 let currentSortField = "Country Name";
 let currentSortOrder = "asc";
 let currRowsPerPage = 10;
+let currentCondition = "";
 const apiUrl = "http://localhost:3000/api/countries";
 
 // This function is used to pull parameters from our query
@@ -63,7 +64,7 @@ function displayPageNumberButtons(page) {
 
 // get countries from our API using the params mentioned in our query or from the form
 //we have to get data from the query
-function fetchCountries(page = 1) {
+function fetchCountries(page = 1, condition) {
   currentSortField =
     getQueryParam("sortField") || document.getElementById("sortField").value;
 
@@ -71,6 +72,8 @@ function fetchCountries(page = 1) {
     getQueryParam("sortOrder") || document.getElementById("sortOrder").value;
 
   currPage = page;
+  currentCondition = condition || "";
+
   displayPageNumberButtons(page);
   currRowsPerPage =
     getQueryParam("rowsPerPage") ||
@@ -78,9 +81,12 @@ function fetchCountries(page = 1) {
 
   // Make the API call with current page, sort field, and sort order
   fetch(
-    `${apiUrl}?page=${page}&rowsPerPage=${currRowsPerPage}&sortField=${currentSortField}&sortOrder=${currentSortOrder}`
+    `${apiUrl}?page=${currPage}&rowsPerPage=${currRowsPerPage}&sortField=${currentSortField}&sortOrder=${currentSortOrder}&condition=${currentCondition}`
   )
-    .then((response) => response.json())
+    .then((response) => {
+      if (response.status === 200) return response.json();
+      else throw new Error("Error while fetching data");
+    })
     .then((data) => {
       currPage = data.page;
       totalPages = data.totalPages;
@@ -128,9 +134,17 @@ function fetchCountries(page = 1) {
         .classList.toggle("disabled", currPage === totalPages);
 
       // Update URL with new state
-      updateUrl(currPage, currentSortField, currentSortOrder, currRowsPerPage);
+      updateUrl(
+        currPage,
+        currentSortField,
+        currentSortOrder,
+        currRowsPerPage,
+        currentCondition
+      );
     })
-    .catch((error) => console.log("Error:", error));
+    .catch((error) => {
+      console.log("Error:", error);
+    });
 }
 
 // Apply the sorting and then we fetch
@@ -190,6 +204,13 @@ function collapseSearch() {
     searchField.style.width = "150px"; // Collapse if the field is empty
   }
 }
+function handleSearch() {
+  const condition = document.getElementById("searchField").value.trim();
+  console.log(condition);
+  // Fetch countries with the search query applied (you can modify this as per your backend API)
+  fetchCountries(1, condition);
+}
+
 // Running on page page load
 window.onload = function () {
   const page = parseInt(getQueryParam("page")) || 1;

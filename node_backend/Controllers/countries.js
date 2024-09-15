@@ -25,8 +25,44 @@ function sortCountries(countries, order, field) {
     }
   });
 }
+function filterByCondition(data, condition) {
+  const filters = condition.split(" "); //as we can have multiple filters
+  filters.forEach((filter) => {
+    const [filterCond, value] = filter.split(":");
+    const [field, condn] = filterCond.split("."); //this is for countryName.lt:100 type of conditions
+    const regexValue = new RegExp(value, "i");
+    let fieldName = "";
+    //our regex is case insensitive
+    if (field === "CountryName") fieldName = "Country Name";
+    else if (field === "Capital") fieldName = "Capital City";
+    else if (field === "TimeZone") fieldName = "Time Zone";
+    else if (field === "population") fieldName = "Population";
+    switch (condn) {
+      case "regex":
+        data = data.filter((country) => regexValue.test(country[fieldName]));
+        break;
+      case "gt":
+        data = data.filter(
+          (country) => parseInt(country[fieldName], 10) > parseInt(value, 10)
+        );
+        break;
+      case "lt":
+        data = data.filter(
+          (country) => parseInt(country[fieldName], 10) < parseInt(value, 10)
+        );
+        break;
+      case "eq":
+        data = data.filter((country) => country[fieldName] == value);
+        break;
+      default:
+        data = data.filter((country) => country[fieldName] == value);
+    }
+  });
+  return data;
+}
 
 module.exports = {
   readCountries,
   sortCountries,
+  filterByCondition,
 };

@@ -14,7 +14,7 @@
   </head>
   <body>
     <div class="container mt-5">
-      <h2 class="mb-4">Countries List with Sorting and Pagination</h2>
+      <h2 class="mb-4">Countries List </h2>
       <div class="mb-3">
         <!-- rows control -->
         <label for="rowsPerPage" class="form-label d-inline-block">Show Rows</label>
@@ -35,6 +35,7 @@
             placeholder="Search"
             onfocus="expandSearch()"
             onblur="collapseSearch()"
+            oninput="handleSearch()"
             style="transition: width 0.4s ease; width: 150px;"
           />
         <!-- sort field control -->

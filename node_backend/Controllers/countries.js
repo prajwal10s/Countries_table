@@ -37,6 +37,7 @@ function filterByCondition(data, condition) {
     else if (field === "Capital") fieldName = "Capital City";
     else if (field === "TimeZone") fieldName = "Time Zone";
     else if (field === "population") fieldName = "Population";
+    else fieldName = field;
     switch (condn) {
       case "regex":
         data = data.filter((country) => regexValue.test(country[fieldName]));

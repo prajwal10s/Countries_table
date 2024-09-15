@@ -14,12 +14,13 @@ function getQueryParam(param) {
 }
 
 // Function to update our URL without reloading the page
-function updateUrl(page, sortField, sortOrder, rowsPerPage) {
+function updateUrl(page, sortField, sortOrder, rowsPerPage, condition = "") {
   const url = new URL(window.location.href);
   url.searchParams.set("page", page);
   url.searchParams.set("sortField", sortField);
   url.searchParams.set("sortOrder", sortOrder);
   url.searchParams.set("rowsPerPage", rowsPerPage);
+  url.searchParams.set("condition", condition);
   window.history.pushState({}, "", url);
 }
 
@@ -38,6 +39,20 @@ function displayPageNumberButtons(page) {
   let pageLink2 = document.querySelector("#page2");
 
   let pageLink3 = document.querySelector("#page3");
+
+  let pageTag1 = page1.innerText;
+  let pageTag2 = page2.innerText;
+  console.log(totalPages);
+  if (totalPages < 3) {
+    if (pageTag1 == totalPages) {
+      pageLink2.classList.add("disabled");
+      pageLink3.classList.add("disabled");
+      return;
+    } else if (pageTag2 == totalPages) {
+      pageLink3.classList.add("disabled");
+      return;
+    } else return;
+  }
 
   pageLink1.classList.remove("active");
   pageLink2.classList.remove("active");
@@ -64,7 +79,7 @@ function displayPageNumberButtons(page) {
 
 // get countries from our API using the params mentioned in our query or from the form
 //we have to get data from the query
-function fetchCountries(page = 1, condition) {
+function fetchCountries(page = 1, condition = "") {
   currentSortField =
     getQueryParam("sortField") || document.getElementById("sortField").value;
 
@@ -72,9 +87,8 @@ function fetchCountries(page = 1, condition) {
     getQueryParam("sortOrder") || document.getElementById("sortOrder").value;
 
   currPage = page;
-  currentCondition = condition || "";
+  currentCondition = getQueryParam("condition") || "";
 
-  displayPageNumberButtons(page);
   currRowsPerPage =
     getQueryParam("rowsPerPage") ||
     document.getElementById("rowsPerPage").value;
@@ -91,7 +105,8 @@ function fetchCountries(page = 1, condition) {
       currPage = data.page;
       totalPages = data.totalPages;
       console.log(data);
-
+      displayPageNumberButtons(page);
+      // disableButtons(totalPages);
       // Add the list of countries to the page
       const countriesList = document.getElementById("countries-list");
       let countriesHtml = `
@@ -156,7 +171,13 @@ function applySorting() {
   currentSortField = sortField;
   currentSortOrder = sortOrder;
   currRowsPerPage = rowsPerPage;
-  updateUrl(currPage, currentSortField, currentSortOrder, currRowsPerPage);
+  updateUrl(
+    currPage,
+    currentSortField,
+    currentSortOrder,
+    currRowsPerPage,
+    currentCondition
+  );
   fetchCountries(1);
 }
 function firstPage() {
@@ -208,6 +229,14 @@ function handleSearch() {
   const condition = document.getElementById("searchField").value.trim();
   console.log(condition);
   // Fetch countries with the search query applied (you can modify this as per your backend API)
+  currentCondition = condition;
+  updateUrl(
+    currPage,
+    currentSortField,
+    currentSortOrder,
+    currRowsPerPage,
+    currentCondition
+  );
   fetchCountries(1, condition);
 }
 

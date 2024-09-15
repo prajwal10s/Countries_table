@@ -16,29 +16,32 @@ app.get("/api/countries", async (req, res) => {
 
     const sortField = req.query.sortField || "Country Name";
     const sortOrder = req.query.sortOrder || "asc";
-    const condition = req.query.condition || "";
+    let condition = req.query.condition || "";
+
+    let countries = await readCountries();
+    condition = condition.trim();
+    if (condition) {
+      countries = filterByCondition(countries, condition);
+      if (!countries.length) {
+        return res.json({
+          page,
+          rowsPerPage,
+          total: 0,
+          totalPages: 1,
+          data: [],
+        });
+      }
+    }
+    let sortedCountries = sortCountries(countries, sortOrder, sortField);
     const startInd = (page - 1) * rowsPerPage;
     const endInd = page * rowsPerPage;
 
-    const countries = await readCountries();
-
-    let sortedCountries = sortCountries(countries, sortOrder, sortField);
-    console.log(sortedCountries);
-    if (condition) {
-      sortedCountries = filterByCondition(sortedCountries, condition);
-      if (!sortedCountries)
-        throw new Error(
-          "There was an error while filtering data using condition"
-        );
-    }
-    console.log(sortedCountries);
     const countriesToShow = sortedCountries.slice(startInd, endInd);
-
     res.json({
       page,
       rowsPerPage,
-      total: countries.length,
-      totalPages: Math.ceil(countries.length / rowsPerPage),
+      total: sortedCountries.length,
+      totalPages: Math.ceil(sortedCountries.length / rowsPerPage),
       data: countriesToShow,
     });
   } catch (error) {

@@ -23,7 +23,7 @@ now you can test out the functionalities in table
 
 Note:
 
-for Regex or any other field operatins:
+for Regex or any other field operations:
 Please use below columnNames for columns in the file
 use CountryName for Country Name
 use TimeZone for Time Zome

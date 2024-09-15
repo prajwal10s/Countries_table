@@ -42,13 +42,12 @@ function displayPageNumberButtons(page) {
 
   let pageTag1 = page1.innerText;
   let pageTag2 = page2.innerText;
-  console.log(totalPages);
   if (totalPages < 3) {
-    if (pageTag1 == totalPages) {
+    if (parseInt(pageTag1, 10) === totalPages) {
       pageLink2.classList.add("disabled");
       pageLink3.classList.add("disabled");
       return;
-    } else if (pageTag2 == totalPages) {
+    } else if (parseInt(pageTag2, 10) === totalPages) {
       pageLink3.classList.add("disabled");
       return;
     } else return;

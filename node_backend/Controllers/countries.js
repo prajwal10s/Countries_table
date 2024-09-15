@@ -43,14 +43,16 @@ function filterByCondition(data, condition) {
         data = data.filter((country) => regexValue.test(country[fieldName]));
         break;
       case "gt":
-        data = data.filter(
-          (country) => parseInt(country[fieldName], 10) > parseInt(value, 10)
-        );
+        if (fieldName === "Population")
+          data = data.filter(
+            (country) => parseInt(country[fieldName], 10) > parseInt(value, 10)
+          );
         break;
       case "lt":
-        data = data.filter(
-          (country) => parseInt(country[fieldName], 10) < parseInt(value, 10)
-        );
+        if (fieldName === "Population")
+          data = data.filter(
+            (country) => parseInt(country[fieldName], 10) < parseInt(value, 10)
+          );
         break;
       case "eq":
         data = data.filter((country) => country[fieldName] == value);

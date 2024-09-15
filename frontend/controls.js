@@ -1,3 +1,5 @@
+//this file is not being used this is the complete code file without refactoring
+
 let currPage = 1;
 let totalPages = 1;
 let currentSortField = "Country Name";
@@ -52,7 +54,9 @@ function displayPageNumberButtons(page) {
       return;
     } else return;
   }
-
+  pageLink1.classList.remove("disabled");
+  pageLink2.classList.remove("disabled");
+  pageLink3.classList.remove("disabled");
   pageLink1.classList.remove("active");
   pageLink2.classList.remove("active");
   pageLink3.classList.remove("active");
@@ -239,7 +243,7 @@ function handleSearch() {
   fetchCountries(1, condition);
 }
 
-// Running on page page load
+// Running on page  load
 window.onload = function () {
   const page = parseInt(getQueryParam("page")) || 1;
   const sortField = getQueryParam("sortField") || "Country Name"; //sort based on country name

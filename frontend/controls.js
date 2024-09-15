@@ -164,6 +164,21 @@ function nextPage() {
     fetchCountries(currPage + 1);
   }
 }
+function handlePageClick(page) {
+  if (currPage === 1) {
+    if (page === "second") {
+      fetchCountries(currPage + 1);
+    } else if (page === "third") {
+      fetchCountries(currPage + 2);
+    }
+  } else if (currPage === totalPages) {
+    if (page === "second") fetchCountries(currPage - 1);
+    else if (page === "first") fetchCountries(currPage - 2);
+  } else {
+    if (page === "first") fetchCountries(currPage - 1);
+    else if (page === "third") fetchCountries(currPage + 1);
+  }
+}
 
 // Running on page page load
 window.onload = function () {

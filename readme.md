@@ -2,7 +2,7 @@ Make Sure Node JS is installed on your system
 
 clone this git repository in your local system
 
-go to the directory DISTILL-ASSIGNMENT/node_backend
+go to the directory Countries_table/node_backend
 
 now run npm i
 
@@ -13,7 +13,7 @@ node index.js
 
 Now this will run your API on port 3000
 
-now go to DISTILL-ASSIGNMENT/frontend directory
+now go to Countries_table/frontend directory
 
 run the index.html file
 
